@@ -137,7 +137,7 @@ if __name__ == '__main__':
     args.device = torch.device('cuda:{}'.format(
         args.gpu) if torch.cuda.is_available() and args.gpu != -1 else 'cpu')
 
-    args.dataset = 'mnist'
+    args.dataset = 'cifar'
     args.num_channels = 1
     args.model = 'cnn'
 
@@ -146,35 +146,35 @@ if __name__ == '__main__':
     args.local_bs = 10  # local batch size
     args.local_ep = 1  # local epoch
 
-    if os.path.exists(f"./mnist_results/fedavg_acc_lam_{lam}_k_{top_k}.txt"):
+    if os.path.exists(f"./cifar_results/fedavg_acc_lam_{lam}_k_{top_k}.txt"):
 
-        os.remove(f"./mnist_results/fedavg_acc_lam_{lam}_k_{top_k}.txt")
-        os.remove(f"./mnist_results/fedavg_loss_lam_{lam}_k_{top_k}.txt")
-        os.remove(f"./mnist_results/fedavg_power_lam_{lam}_k_{top_k}.txt")
-        os.remove(f"./mnist_results/ibcs_acc_lam_{lam}_k_{top_k}.txt")
-        os.remove(f"./mnist_results/ibcs_loss_lam_{lam}_k_{top_k}.txt")
-        os.remove(f"./mnist_results/ibcs_power_lam_{lam}_k_{top_k}.txt")
+        os.remove(f"./cifar_results/fedavg_acc_lam_{lam}_k_{top_k}.txt")
+        os.remove(f"./cifar_results/fedavg_loss_lam_{lam}_k_{top_k}.txt")
+        os.remove(f"./cifar_results/fedavg_power_lam_{lam}_k_{top_k}.txt")
+        os.remove(f"./cifar_results/ibcs_acc_lam_{lam}_k_{top_k}.txt")
+        os.remove(f"./cifar_results/ibcs_loss_lam_{lam}_k_{top_k}.txt")
+        os.remove(f"./cifar_results/ibcs_power_lam_{lam}_k_{top_k}.txt")
 
     acc_file_fedavg = open(
-        f"./mnist_results/fedavg_acc_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/fedavg_acc_lam_{lam}_k_{top_k}.txt", "a")
     loss_file_fedavg = open(
-        f"./mnist_results/fedavg_loss_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/fedavg_loss_lam_{lam}_k_{top_k}.txt", "a")
     power_file_fedavg = open(
-        f"./mnist_results/fedavg_power_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/fedavg_power_lam_{lam}_k_{top_k}.txt", "a")
 
     acc_file_ibcs = open(
-        f"./mnist_results/ibcs_acc_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/ibcs_acc_lam_{lam}_k_{top_k}.txt", "a")
     loss_file_ibcs = open(
-        f"./mnist_results/ibcs_loss_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/ibcs_loss_lam_{lam}_k_{top_k}.txt", "a")
     power_file_ibcs = open(
-        f"./mnist_results/ibcs_power_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/ibcs_power_lam_{lam}_k_{top_k}.txt", "a")
 
     acc_file_pp = open(
-        f"./mnist_results/pp_acc_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/pp_acc_lam_{lam}_k_{top_k}.txt", "a")
     loss_file_pp = open(
-        f"./mnist_results/pp_loss_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/pp_loss_lam_{lam}_k_{top_k}.txt", "a")
     power_file_pp = open(
-        f"./mnist_results/pp_power_lam_{lam}_k_{top_k}.txt", "a")
+        f"./cifar_results/pp_power_lam_{lam}_k_{top_k}.txt", "a")
 
     # load dataset and split users
     if args.dataset == 'mnist':
